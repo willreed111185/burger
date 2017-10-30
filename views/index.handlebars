@@ -1,32 +1,36 @@
-h1>BURGERS!</h1>
+<div class="row restaurant-row">
+	<div class="col-md-6">
+		<h2>ORDER UP!</h2>
+		{{#each burgers}}
+			{{#unless devoured}}
+				<div class="row burger-item">
+					<div class="col-md-8"><p>#{{id}} {{burger_name}}</p></div> 
+					<div class="col-md-4 float-right"><button data-id="{{id}}" class="btn btn-default devour-burger">EAT ME!</button></div>
+				</div>
+			{{/unless}}
+		{{/each}}	
+	</div>
 
-<h2>Eat These Burgers!</h2>
 
-<ul>
-  {{#each burger}}
-    {{#unless devoured}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+	<div class="col-md-6">
+		<h2>Next Stop: RestRoom</h2>
+		{{#each burgers}}
+			{{#if devoured}}
+				<div class="row burger-item">
+					<div class="col-md-12"><p>#{{id}} {{burger_name}}</p></div> 
+				</div>
+			{{/if}}
+		{{/each}}	
+	</div>
 
-<h2>You Already Ate These Burgers!</h2>
+</div>
 
-<ul>
-  {{#each burger}}
-    {{#if devoured}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Order A New Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-  
-  <button type="submit">Place Order</button>
-</form>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<p>Make A Custom Burger</p>
+		<form action="/" method="POST">
+			<textarea class="form-control align-center" type="text" name="burger"></textarea>
+			<button class="btn btn-default" type="submit">Submit</button>
+		</form>
+	</div>
+</div>
