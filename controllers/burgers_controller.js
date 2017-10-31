@@ -13,6 +13,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
+	console.log(req.body.burger)
 	burger.insertOne(req.body.burger, function(data){
 		res.redirect('/');
 	});

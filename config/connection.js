@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var connection;
 
 var connection = mysql.createConnection({
   port: 8889,
